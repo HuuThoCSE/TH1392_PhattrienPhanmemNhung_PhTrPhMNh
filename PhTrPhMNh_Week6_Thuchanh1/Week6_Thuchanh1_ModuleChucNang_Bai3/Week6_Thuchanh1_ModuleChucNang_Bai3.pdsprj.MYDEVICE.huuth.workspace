@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff190200001700000028080000fc030000</PLACEMENT>
+  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffffedf7ffff69000000fcfdffff4e040000</PLACEMENT>
   <WINDOW type="default" module="ISIS">
-   <editor metric="0" gridmajor="2540000" mode="00000010" zoom="0" scale="116" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="25400" xcursor="0" orgmode="0" snaprange="109482">
+   <editor metric="0" gridmajor="2540000" mode="00000016" zoom="0" scale="85" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="25400" xcursor="0" orgmode="0" snaprange="149411">
     <world y1="-8890000" x1="-12700000" y2="8890000" x2="12700000"/>
-    <centre x="179049" y="1409012"/>
+    <centre x="-203980" y="204381"/>
     <origin x="0" y="0"/>
    </editor>
   </WINDOW>
@@ -18,9 +18,9 @@
   </editor>
  </MODULE>
  <MODULE name="ISIS">
-  <editor metric="0" gridmajor="2540000" mode="00000010" zoom="0" scale="116" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="25400" xcursor="0" orgmode="0" snaprange="109482">
+  <editor metric="0" gridmajor="2540000" mode="00000016" zoom="0" scale="85" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="25400" xcursor="0" orgmode="0" snaprange="149411">
    <world y1="-8890000" x1="-12700000" y2="8890000" x2="12700000"/>
-   <centre x="179049" y="1409012"/>
+   <centre x="-203980" y="204381"/>
    <origin x="0" y="0"/>
   </editor>
  </MODULE>
@@ -87,7 +87,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="168" flags="80000000" y="280" h="32" pid="14" iid="2">
+   <POPUP w="16" x="168" flags="00000000" y="280" h="32" pid="14" iid="2">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -140,7 +140,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="8" x="288" flags="80000002" y="400" h="16" pid="12" iid="1">
+   <POPUP w="8" x="288" flags="00000002" y="400" h="16" pid="12" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -183,7 +183,7 @@
    <POPUP w="18" x="368" flags="00000008" y="480" h="32" pid="10" iid="1">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="388" flags="80000002" y="500" h="8" pid="13" iid="1">
+   <POPUP w="8" x="388" flags="00000002" y="500" h="8" pid="13" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -191,6 +191,12 @@
      <ITEM name="ShowChanges">Yes</ITEM>
      <ITEM name="ShowToolTips">Yes</ITEM>
      <ITEM name="TopLineAddress">00000000</ITEM>
+    </PROPERTIES>
+   </POPUP>
+   <POPUP w="450" x="-1176" flags="00008023" y="569" h="250" pid="0" iid="8">
+    <PROPERTIES>
+     <ITEM name="AutoEcho">0</ITEM>
+     <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
   </PWI>
