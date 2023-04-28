@@ -6,6 +6,7 @@ bool isButtonPressed = false;
 bool ledState = false;
 
 void setup() {
+  Serial.begin(9600);
   pinMode(pinLed, OUTPUT);
   pinMode(pinBtn, INPUT);
 }
@@ -17,7 +18,7 @@ void loop() {
     buttonPressTime = millis();
     isButtonPressed = true;
   }
-
+_
   if (isButtonPressed && buttonState == HIGH) {
     unsigned long duration = millis() - buttonPressTime;
     if (duration >= 500) {
@@ -29,3 +30,4 @@ void loop() {
     isButtonPressed = false;
   }
 }
+

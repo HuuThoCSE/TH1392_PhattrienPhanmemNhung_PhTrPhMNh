@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino -->
+<html lang="vi-VN" dir="ltr" class="" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ôn tập các cảm biến Ar... | VLUTE Wiki</title>
+
+    <!-- Meta -->
+    
+    <meta name="viewport" content="width=device-width">
+    <meta name="token" content="X7K9GQzTL05Xi9MNcCvBDashAOf5D1bLHDc8wgTH">
+    <meta name="base-url" content="http://huongdan.fit.vlute.edu.vn">
+    <meta name="theme-color" content="#206ea7">
+
+    <!-- Social Cards Meta -->
+    <meta property="og:title" content="Ôn tập các cảm biến Ar... | VLUTE Wiki">
+    <meta property="og:url" content="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino">
+        <meta property="og:description" content="Bài 1: Hãy sử dụng cảm biến siêu âm HC-SR04 để ứng dụng vào bài toán điều khiển máy bơm tự động theo...">
+
+    <!-- Styles and Fonts -->
+    <link rel="stylesheet" href="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/styles.css">
+    <link rel="stylesheet" media="print" href="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/print-styles.css">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="256x256" href="http://huongdan.fit.vlute.edu.vn/uploads/images/system/2023-03/BqSlogo-1.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="http://huongdan.fit.vlute.edu.vn/uploads/images/system/2023-03/5sPlogo-1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://huongdan.fit.vlute.edu.vn/uploads/images/system/2023-03/5sPlogo-1.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="http://huongdan.fit.vlute.edu.vn/uploads/images/system/2023-03/Dkologo-1.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="http://huongdan.fit.vlute.edu.vn/uploads/images/system/2023-03/aXklogo-1.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://huongdan.fit.vlute.edu.vn/uploads/images/system/2023-03/bvalogo-1.png">
+
+    
+    <!-- Custom Styles & Head Content -->
+    <style>
+    :root {
+        --color-primary: #206ea7;
+        --color-primary-light: rgba(32,110,167,0.15);
+        --color-link: #206ea7;
+        --color-bookshelf: #a94747;
+        --color-book: #077b70;
+        --color-chapter: #af4d0d;
+        --color-page: #206ea7;
+        --color-page-draft: #7e50b1;
+    }
+</style>
+    <!-- Start: custom user content -->
+<style nonce="">
+.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6, .page-content pre {
+    clear: left;
+    font-weight: 500;
+}
+table {
+    width: 100%;
+}
+td {
+    text-align: center;
+}
+</style>
+<!-- End: custom user content -->
+
+    
+    <!-- Translations for JS -->
+    <style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style></head>
+<body class=" tri-layout " style="">
+
+        <a class="px-m py-s skip-to-content-link print-hidden" href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino#main-content" style="">Nhảy đến nội dung chính</a>    <div component="notification" option:notification:type="success" option:notification:auto-hide="true" option:notification:show="false" style="display: grid;" class="notification pos" role="alert">
+    <svg class="svg-icon" data-icon="check-circle" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+</svg> <span></span><div class="dismiss"><svg class="svg-icon" data-icon="close" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg></div>
+</div>
+
+<div component="notification" option:notification:type="warning" option:notification:auto-hide="false" option:notification:show="false" style="display: grid;" class="notification warning" role="alert">
+    <svg class="svg-icon" data-icon="info" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"></path>
+</svg> <span></span><div class="dismiss"><svg class="svg-icon" data-icon="close" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg></div>
+</div>
+
+<div component="notification" option:notification:type="error" option:notification:auto-hide="false" option:notification:show="false" style="display: grid;" class="notification neg" role="alert">
+    <svg class="svg-icon" data-icon="danger" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg> <span></span><div class="dismiss"><svg class="svg-icon" data-icon="close" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg></div>
+</div>    <header id="header" component="header-mobile-toggle" class="primary-background">
+    <div class="grid mx-l">
+
+        <div>
+            <a href="http://huongdan.fit.vlute.edu.vn/" data-shortcut="home_view" class="logo">
+                                    <img class="logo-image" src="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/logo-1.png" alt="Logo">
+                                                    <span class="logo-text">VLUTE Wiki</span>
+                            </a>
+            <button type="button" refs="header-mobile-toggle@toggle" title="Mở rộng Header Menu" aria-expanded="false" class="mobile-menu-toggle hide-over-l"><svg class="svg-icon" data-icon="more" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+</svg></button>
+        </div>
+
+        <div class="flex-container-column items-center justify-center hide-under-l">
+                        <form component="global-search" action="http://huongdan.fit.vlute.edu.vn/search" method="GET" class="search-box" role="search" tabindex="0">
+                <button id="header-search-box-button" refs="global-search@button" type="submit" aria-label="Tìm kiếm" tabindex="-1"><svg class="svg-icon" data-icon="search" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg></button>
+                <input id="header-search-box-input" refs="global-search@input" type="text" name="term" data-shortcut="global_search" autocomplete="off" aria-label="Tìm kiếm" placeholder="Tìm kiếm" value="">
+                <div refs="global-search@suggestions" class="global-search-suggestions card">
+                    <div refs="global-search@loading" class="text-center px-m global-search-loading"><div class="loading-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    </div></div>
+                    <div refs="global-search@suggestion-results" class="px-m"></div>
+                    <button class="text-button card-footer-link" type="submit">Xem tất cả</button>
+                </div>
+            </form>
+                    </div>
+
+        <nav refs="header-mobile-toggle@menu" class="header-links">
+            <div class="links text-center">
+                                    <a class="hide-over-l" href="http://huongdan.fit.vlute.edu.vn/search"><svg class="svg-icon" data-icon="search" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg>Tìm kiếm</a>
+                    
+                    
+                                        
+                                    
+                                                        <a href="http://huongdan.fit.vlute.edu.vn/login"><svg class="svg-icon" data-icon="login" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M21 3.01H3c-1.1 0-2 .9-2 2V9h2V4.99h18v14.03H3V15H1v4.01c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98v-14c0-1.11-.9-2-2-2zM11 16l4-4-4-4v3H1v2h10v3z"></path>
+</svg>Đăng nhập</a>
+                            </div>
+                    </nav>
+
+    </div>
+</header>
+
+    <div id="content" components="tri-layout" class="block">
+        
+    <div class="tri-layout-mobile-tabs print-hidden">
+        <div class="grid half no-break no-gap">
+            <button type="button" refs="tri-layout@tab" data-tab="info" aria-label="Tab: Hiển thị thông tin phụ" class="tri-layout-mobile-tab px-m py-m text-link">
+                Thông tin
+            </button>
+            <button type="button" refs="tri-layout@tab" data-tab="content" aria-label="Tab: Hiển thị nội dung chính" aria-selected="true" class="tri-layout-mobile-tab px-m py-m text-link active">
+                Nội dung
+            </button>
+        </div>
+    </div>
+
+    <div refs="tri-layout@container" class="tri-layout-container">
+
+        <div class="tri-layout-left print-hidden" id="sidebar">
+            <aside class="tri-layout-left-contents" id="__FPSC_ID_2_1682674962765" style="">
+                
+    
+    
+    
+    <nav id="book-tree" class="book-tree mb-xl" aria-label="Điều hướng cuốn sách">
+
+    <h5>Điều hướng cuốn sách</h5>
+
+    <ul class="sidebar-page-list mt-xs menu entity-list">
+                    <li class="list-item-book book">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung" class="book   entity-list-item" data-entity-type="book" data-entity-id="25">
+    <span role="presentation" class="icon text-book"><svg class="svg-icon" data-icon="book" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">TH1392 - Phát triển phần mềm nhúng</h4>
+            
+    </div>
+</a>            </li>
+        
+                    <li class="list-item-page page ">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/huong-dan-cai-dat-moi-truong-va-mo-phong-arduino" class="page   entity-list-item" data-entity-type="page" data-entity-id="93">
+    <span role="presentation" class="icon text-page"><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">Hướng dẫn cài đặt môi trường và mô phỏng Arduino</h4>
+            
+    </div>
+</a>
+                
+            </li>
+                    <li class="list-item-page page ">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/huong-dan-su-dung-blynk-voi-protues" class="page   entity-list-item" data-entity-type="page" data-entity-id="95">
+    <span role="presentation" class="icon text-page"><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">Hướng dẫn sử dụng Blynk với Protues</h4>
+            
+    </div>
+</a>
+                
+            </li>
+                    <li class="list-item-page page ">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/huong-dan-cai-dat-moi-truong-bo-kit-grove-creator-seeeduino" class="page   entity-list-item" data-entity-type="page" data-entity-id="94">
+    <span role="presentation" class="icon text-page"><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">Hướng dẫn cài đặt môi trường bộ kit Grove Creator (Seeeduino)</h4>
+            
+    </div>
+</a>
+                
+            </li>
+                    <li class="list-item-chapter chapter ">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/chapter/huong-dan-bai-tap" class="chapter   entity-list-item" data-entity-type="chapter" data-entity-id="19">
+    <span role="presentation" class="icon text-chapter"><svg class="svg-icon" data-icon="chapter" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">Hướng dẫn Bài tập</h4>
+            
+    </div>
+</a>
+                                    <div class="entity-list-item no-hover">
+                        <span role="presentation" class="icon text-chapter"></span>
+                        <div class="content">
+                            <div component="chapter-contents" class="chapter-child-menu">
+    <button type="button" refs="chapter-contents@toggle" aria-expanded="true" class="text-muted chapter-contents-toggle  open ">
+        <svg class="svg-icon" data-icon="caret-right" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 17.5l5-5-5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg> <svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg> <span>2 Trang</span>
+    </button>
+    <ul refs="chapter-contents@list" class="chapter-contents-list sub-menu inset-list  open " style="display: block;" role="menu">
+                    <li class="list-item-page " role="presentation">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-lap-trinh-arduino" class="page   entity-list-item" data-entity-type="page" data-entity-id="97">
+    <span role="presentation" class="icon text-page"><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">Ôn tập lập trình Arduino</h4>
+            
+    </div>
+</a>            </li>
+                    <li class="list-item-page " role="presentation">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino" class="page  selected entity-list-item" data-entity-type="page" data-entity-id="166">
+    <span role="presentation" class="icon text-page"><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">Ôn tập các cảm biến Arduino</h4>
+            
+    </div>
+</a>            </li>
+            </ul>
+</div>                        </div>
+                    </div>
+
+                
+            </li>
+                    <li class="list-item-chapter chapter ">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/chapter/4f4ad" class="chapter   entity-list-item" data-entity-type="chapter" data-entity-id="20">
+    <span role="presentation" class="icon text-chapter"><svg class="svg-icon" data-icon="chapter" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text"></h4>
+            
+    </div>
+</a>
+                                    <div class="entity-list-item no-hover">
+                        <span role="presentation" class="icon text-chapter"></span>
+                        <div class="content">
+                            <div component="chapter-contents" class="chapter-child-menu">
+    <button type="button" refs="chapter-contents@toggle" aria-expanded="false" class="text-muted chapter-contents-toggle ">
+        <svg class="svg-icon" data-icon="caret-right" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 17.5l5-5-5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg> <svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg> <span>1 Trang</span>
+    </button>
+    <ul refs="chapter-contents@list" class="chapter-contents-list sub-menu inset-list " role="menu">
+                    <li class="list-item-page " role="presentation">
+                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/new-page" class="page   entity-list-item" data-entity-type="page" data-entity-id="96">
+    <span role="presentation" class="icon text-page"><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+    <div class="content">
+            <h4 class="entity-list-item-name break-text">New Page</h4>
+            
+    </div>
+</a>            </li>
+            </ul>
+</div>                        </div>
+                    </div>
+
+                
+            </li>
+            </ul>
+</nav>            </aside>
+        </div>
+
+        <div class=" tri-layout-middle">
+            <div id="main-content" class="tri-layout-middle-contents">
+                
+    <div class="mb-m print-hidden">
+        <nav class="breadcrumbs text-center" aria-label="Đường dẫn liên kết">
+    
+    
+            
+        <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino#" class="text-book icon-list-item outline-hover">
+            <span><svg class="svg-icon" data-icon="books" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19.252 1.708H8.663a1.77 1.77 0 0 0-1.765 1.764v14.12c0 .97.794 1.764 1.765 1.764h10.59a1.77 1.77 0 0 0 1.764-1.765V3.472a1.77 1.77 0 0 0-1.765-1.764zM8.663 3.472h4.412v7.06L10.87 9.208l-2.206 1.324z"></path><path d="M30.61 3.203h24v24h-24z" fill="none"></path><path d="M2.966 6.61v14c0 1.1.9 2 2 2h14v-2h-14v-14z"></path></svg></span>
+            <span>Tất cả sách</span>
+        </a>
+            
+    
+    
+            
+                
+                                    <div class="dropdown-search" components="dropdown dropdown-search" option:dropdown-search:url="/search/entity/siblings?entity_type=book&amp;entity_id=25" option:dropdown-search:local-search-selector=".entity-list-item">
+    <div class="dropdown-search-toggle-breadcrumb" refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" tabindex="0">
+        <div class="separator"><svg class="svg-icon" data-icon="chevron-right" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></div>
+    </div>
+    <div refs="dropdown@menu" class="dropdown-search-dropdown card" role="menu">
+        <div class="dropdown-search-search">
+            <svg class="svg-icon" data-icon="search" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg>            <input refs="dropdown-search@searchInput" aria-label="Tìm kiếm" autocomplete="off" placeholder="Tìm kiếm" type="text">
+        </div>
+        <div refs="dropdown-search@loading">
+            <div class="loading-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>        </div>
+        <div refs="dropdown-search@listContainer" class="dropdown-search-list px-m" tabindex="-1"></div>
+    </div>
+</div>                        <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung" class="text-book icon-list-item outline-hover">
+                <span><svg class="svg-icon" data-icon="book" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"></path>
+</svg></span>
+                <span>
+                    TH1392 - Phát triển ph...
+                </span>
+            </a>
+                            
+                
+                                    <div class="dropdown-search" components="dropdown dropdown-search" option:dropdown-search:url="/search/entity/siblings?entity_type=chapter&amp;entity_id=19" option:dropdown-search:local-search-selector=".entity-list-item">
+    <div class="dropdown-search-toggle-breadcrumb" refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" tabindex="0">
+        <div class="separator"><svg class="svg-icon" data-icon="chevron-right" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></div>
+    </div>
+    <div refs="dropdown@menu" class="dropdown-search-dropdown card" role="menu">
+        <div class="dropdown-search-search">
+            <svg class="svg-icon" data-icon="search" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg>            <input refs="dropdown-search@searchInput" aria-label="Tìm kiếm" autocomplete="off" placeholder="Tìm kiếm" type="text">
+        </div>
+        <div refs="dropdown-search@loading">
+            <div class="loading-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>        </div>
+        <div refs="dropdown-search@listContainer" class="dropdown-search-list px-m" tabindex="-1"></div>
+    </div>
+</div>                        <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/chapter/huong-dan-bai-tap" class="text-chapter icon-list-item outline-hover">
+                <span><svg class="svg-icon" data-icon="chapter" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"></path>
+</svg></span>
+                <span>
+                    Hướng dẫn Bài tập
+                </span>
+            </a>
+                            
+                
+                                    <div class="dropdown-search" components="dropdown dropdown-search" option:dropdown-search:url="/search/entity/siblings?entity_type=page&amp;entity_id=166" option:dropdown-search:local-search-selector=".entity-list-item">
+    <div class="dropdown-search-toggle-breadcrumb" refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" tabindex="0">
+        <div class="separator"><svg class="svg-icon" data-icon="chevron-right" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></div>
+    </div>
+    <div refs="dropdown@menu" class="dropdown-search-dropdown card" role="menu">
+        <div class="dropdown-search-search">
+            <svg class="svg-icon" data-icon="search" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg>            <input refs="dropdown-search@searchInput" aria-label="Tìm kiếm" autocomplete="off" placeholder="Tìm kiếm" type="text">
+        </div>
+        <div refs="dropdown-search@loading">
+            <div class="loading-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>        </div>
+        <div refs="dropdown-search@listContainer" class="dropdown-search-list px-m" tabindex="-1"></div>
+    </div>
+</div>                        <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino" class="text-page icon-list-item outline-hover">
+                <span><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+                <span>
+                    Ôn tập các cảm biến Ar...
+                </span>
+            </a>
+                    </nav>    </div>
+
+    <main class="content-wrap card">
+        <div component="page-display" option:page-display:page-id="166" class="page-content clearfix">
+            <div dir="auto">
+
+    <h1 class="break-text" id="bkmrk-page-title">Ôn tập các cảm biến Arduino</h1>
+
+    <div style="clear:left;"></div>
+
+            <p id="bkmrk-b%E3%A0i-1%3A-h%E3%A3y-s%E1%BB%AD-d%E1%BB%A5ng-c%E1%BA%A3m">Bài 1: Hãy sử dụng cảm biến siêu âm HC-SR04 để ứng dụng vào bài toán điều khiển máy bơm tự động theo mực nước?</p>
+<p id="bkmrk-a%29-%E4%90%E1%BB%8Dc-gi%E3%A1-tr%E1%BB%8B-kho%E1%BA%A3n">a)	Đọc giá trị khoảng cách hiển thị lên màn hình LCD?</p>
+<p id="bkmrk-b%29-khi-kho%E1%BA%A3ng-c%E3%A1ch-t%E1%BB%AB">b)	Khi khoảng cách từ cảm biến đến mực nước trên 100CM thì điều khiển máy bơm nước cho đến khi mực nước cách cảm biến 20CM</p>
+<p id="bkmrk-c%29-theo-y%E3%AAu-c%E1%BA%A7u-c%E3%A2u-b%2C">c)	Theo yêu cầu câu b, nếu máy bơm hoạt động quá 15 phút mà mực nước chưa cách cảm biến 20CM thì tắt máy bơm nước và bật còi báo động.
+<a href="http://huongdan.fit.vlute.edu.vn/uploads/images/gallery/2023-04/image-1682660911591.png"><img src="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/image-1682660911591.png" alt=""></a></p>
+<p id="bkmrk-b%E3%A0i-2%3A-th%E1%BB%B1c-hi%E1%BB%87n-%E4%91%E1%BA%A5u">Bài 2: Thực hiện đấu nối và lập trình “Cảm biến mưa” kết hợp với “L298 Motor Driver” để mô phỏng hệ thống gạt nước mưa trên Ôtô với các kịch bản sau:</p>
+<p id="bkmrk-a%29-khi-c%E1%BA%A3m-bi%E1%BA%BFn-m%E6%B0a-n">a)	Khi cảm biến mưa nhận biết mưa thì sẽ điều khiển Motor với tốc độ nhanh chậm phụ thuộc vào trời mưa lớn hay mưa nhỏ.</p>
+<p id="bkmrk-b%29-khi-c%E1%BA%A3m-bi%E1%BA%BFn-m%E6%B0a-n">b)	Khi cảm biến mưa nhận biết mưa thì sẽ điều khiển động cơ sẽ quay với 1 vận tốc cố định.</p>
+<p id="bkmrk-b%E3%A0i-3%3A-thi%E1%BA%BFt-k%E1%BA%BF-m%E1%BA%A1ch-">Bài 3: Thiết kế mạch gồm 1 “Cảm biến LM35” kết hợp với 1 đèn LED để thực hiện mở đèn khi nhiệt độ môi trường &lt; 30 °C ngược lại thì tắt đèn.</p>
+<p id="bkmrk-b%E3%A0i-4%3A-thi%E1%BA%BFt-k%E1%BA%BF-m%E1%BA%A1ch-">Bài 4: Thiết kế mạch gồm 1 LCD kết hợp với cảm biến LM35 và thực hiện các kịch bản sau:</p>
+<p id="bkmrk-a%29-t%E1%BA%A1o-2-n%E3%BAt-nh%E1%BA%A5n-%28m%E1%BB%99">a)	Tạo 2 nút nhấn (Một nút nhấn cho phép hiển thị theo °C, một nút nhấn cho phép hiển thị độ F). Hãy lập trình để hiển thị nhiệt độ lên LCD.</p>
+<p id="bkmrk-b%29-t%E1%BA%A1o-1-n%E3%BAt-nh%E1%BA%A5n-cho">b)	Tạo 1 nút nhấn cho phép chuyển chế độ hiển thị độ đo (độ F sang °C và ngược lại).</p>
+<p id="bkmrk-c%29-th%E1%BB%B1c-hi%E1%BB%87n-%E4%91%E1%BA%A5u-n%E1%BB%91">c)	Thực hiện đấu nối với 3 đèn LED cho phép đèn xanh sáng khi nhiệt độ dưới 17 °C, đèn vàng sáng khi nhiệt độ từ 17 °C – 30 °C và đèn đỏ sáng khi nhiệt độ lớn hơn 30 °C.</p>
+<p id="bkmrk-b%E3%A0i-5%3A-s%E1%BB%AD-d%E1%BB%A5ng-module">Bài 5: Sử dụng module “L298 Motor Driver” để điều khiển động cơ qua arduino?</p>
+<p id="bkmrk-b%E3%A0i-6%3A-s%E1%BB%AD-d%E1%BB%A5ng-module">Bài 6: Sử dụng module “L298 Motor Driver” để điều khiển động cơ qua 2 nút nhấn (trái phải)?</p>
+<p id="bkmrk-b%E3%A0i-7%3A-s%E1%BB%AD-d%E1%BB%A5ng-c%E1%BA%A3m-bi">Bài 7: Sử dụng cảm biến “RAIN SENSOR” kết hợp với bo mạch Arduino để xây dựng hệ thông báo mưa? Kết hợp với “L298 Motor Driver” để mô phỏng hoạt động của hệ thống mái che mưa?</p>
+<p id="bkmrk-b%E3%A0i-8%3A-s%E1%BB%AD-d%E1%BB%A5ng-module">Bài 8: Sử dụng module “Real-Time clock DS1307” để xây dựng đồng hồ thời gian thực và hiển thị lên màn hình LCD? Thực hiện tính năng hẹn giờ qua việc bật 1 đèn LED khi phút ở giá trị 15 và tắt khi giá trị phút lớn hơn 20?</p>
+<p id="bkmrk-b%E3%A0i-9%3A-s%E1%BB%AD-d%E1%BB%A5ng-module">Bài 9: Sử dụng module “Sensor HC-SR04” thực hiện tính năng đo khoảng các đến vật thể? Kết hợp với module L298 Motor Driver để thay đổi vòng quay động cơ thì có vật cảm?</p>
+<p id="bkmrk-b%E3%A0i-10%3A-h%E3%A3y-s%E1%BB%AD-d%E1%BB%A5ng-mo">Bài 10: Hãy sử dụng module HC05/HC06 xây dựng hệ thống truyền lệnh điều khiển qua lại giữa 2 bo mạch Arduino?</p>
+<p id="bkmrk-b%E3%A0i-11%3A-s%E1%BB%AD-d%E1%BB%A5ng-c%E1%BA%A3m-b">Bài 11: Sử dụng cảm biến “RAIN SENSOR” kết hợp với bo mạch Arduino để xây dựng hệ thống báo mưa? Kết hợp với “L298 Motor Driver” và “Cảm biến ánh sáng” để mô phỏng hoạt động của hệ thống giàn phơi thông minh?</p>
+<ul id="bkmrk-n%E1%BA%BFu-gi%E3%A1-tr%E1%BB%8B-c%E1%BA%A3m-bi%E1%BA%BFn-">
+<li>
+<p>Nếu giá trị cảm biến mưa =1 và giá trị cảm biến ánh sáng &gt; 35% thì động cơ sẽ kéo giàn phơi ra và hiển thị số liệu, trạng thái lên màn hình LCD 16x2.</p>
+</li>
+<li>
+<p>Nếu giá trị cảm biến mưa =0 hoặc giá trị cảm biến ánh sáng &lt; 35% thì động cơ sẽ thu giàn phơi vào và hiển thị số liệu, trạng thái lên màn hình LCD 16x2.</p>
+</li>
+</ul>
+<p id="bkmrk-b%E3%A0i-12%3A-h%E3%A3y-s%E1%BB%AD-d%E1%BB%A5ng-%E2%80%9Cc">Bài 12: Hãy sử dụng “Cảm biến độ ẩm đất” kết hợp với bo mạch Arduino để xây dựng hệ thống vườn tự động. Kết hợp với “L298 Motor Driver” và màn hình LCD để mô phỏng hoạt động của vườn tự động.</p>
+<ul id="bkmrk-n%E1%BA%BFu-%E4%91%E1%BB%99-%E1%BA%A9m-nh%E1%BB%8F-h%E6%A1n-70">
+<li>Nếu độ ẩm nhỏ hơn 70% thì sẽ kích cho motor bơm chạy, đồng thời hiển thị thông báo lên màn hình LCD 16x2.
++Khi độ ẩm đất từ 70% trở lên, motor bơm sẽ dừng và đèn sẽ tắt.</li>
+</ul>
+<p id="bkmrk-b%E3%A0i-13%3A-s%E1%BB%AD-d%E1%BB%A5ng-modul">Bài 13: Sử dụng module “Cảm biến từ trường (Reed Switch Magnetic Sensor) ” . Khi cảm biến có tín hiệu, arduino sẽ kích relay bật, cấp điện cho động cơ hoạt động. Khi cảm biến không còn nhận được tín hiệu, relay sẽ tắt và motor dừng.</p>
+<p id="bkmrk-b%E3%A0i-14%3A-s%E1%BB%AD-d%E1%BB%A5ng-modul">Bài 14: Sử dụng module “Flame sensor” và “Gas sensor” kết hợp với bo mạch Arduino để xây dựng hệ thống cảnh báo cháy cho Smart Home. Bật đèn LED và Buzzer khi cảm biến phát hiện ra lửa, khí dễ cháy hoặc khói.</p>
+<p id="bkmrk-b%E3%A0i-15%3A-s%E1%BB%AD-d%E1%BB%A5ng-2-bo-">Bài 15: Sử dụng 2 bo Arduino và giao thức UART để truyền và nhận dữ liệu qua lại giữa 2 bo Arduino theo yêu cầu bên dưới?</p>
+<p id="bkmrk-a%29-k%E1%BA%BFt-n%E1%BB%91i-bo-arduin">a)	Kết nối bo Arduino A với màn hình LCD (I2C), bo Arduino B với màn hình LCD (SPI)</p>
+<p id="bkmrk-b%29-k%E1%BA%BFt-n%E1%BB%91i-uart-gi%E1%BB%AFa">b)	Kết nối UART giữa 2 bo mạch này, trong đó dữ liệu khi nhận qua lại giữa hai bo Arduino sẽ hiển thị lên màn hình LCD.</p>
+<p id="bkmrk-b%E3%A0i-16%3A-s%E1%BB%AD-d%E1%BB%A5ng-2-bo-">Bài 16: Sử dụng 2 bo Arduino và giao thức UART để truyền và nhận dữ liệu qua lại giữa 2 bo Arduino theo yêu cầu bên dưới?</p>
+<p id="bkmrk-a%29-k%E1%BA%BFt-n%E1%BB%91i-bo-arduin-0">a)	Kết nối bo Arduino A với cảm biến DHT11 và gửi dữ liệu sang bo Arduino B</p>
+<p id="bkmrk-b%29-bo-arduino-b-tr%E1%BA%A3-">b)	Bo Arduino B trả phản hồi về bo Arduino khi đã nhận được dữ liệu</p>
+<p id="bkmrk-c%29-bo-arduino-b-k%E1%BA%BFt-">c)	Bo Arduino B kết nối với màn hình LCD 16x6 với kết nối I2C để hiển thị lên màn hình LCD.
+<a href="http://huongdan.fit.vlute.edu.vn/uploads/images/gallery/2023-04/image-1682661189330.png"><img src="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/image-1682661189330.png" alt=""></a>
+Bài 17: Kết nối 4 bo mạch Arduino thông qua giao thức I2C để nhận và gửi dữ liệu giữa chúng theo kịch bản bên dưới?</p>
+<p id="bkmrk-a%29-tr%E3%AAn-bo-arduino-a%2C">a)	Trên bo Arduino A, B, C kết nối với 1 LED bất kỳ (A, B, C đóng vai trong Slave)</p>
+<p id="bkmrk-b%29-tr%E3%AAn-bo-arduino-d-">b)	Trên bo Arduino D kết nối I2C với 3 bo Arduino còn lại và kết nối 3 nút nhấn</p>
+<p id="bkmrk-c%29-tr%E3%AAn-bo-arduino-d-">c)	Trên bo Arduino D khi nhấn 1 nút nhấn sẽ gửi tín hiệu I2C sang 1 bo tương ứng để bật một LED
+<a href="http://huongdan.fit.vlute.edu.vn/uploads/images/gallery/2023-04/image-1682661206943.png"><img src="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/image-1682661206943.png" alt=""></a>
+Bài 21: Sử dụng bo mạch Arduino kết nối với cảm biến ánh sáng và cảm biến DHT11 để gửi và nhận dữ liệu lên dịch vụ ThingSpeak với các yêu cầu bên dưới?</p>
+<p id="bkmrk-a%29-thi%E1%BA%BFt-k%E1%BA%BF-giao-di%E1%BB%87">a)	Thiết kế giao diện thống kê dữ liệu ánh sáng, nhiệt độ và độ ẩm</p>
+<p id="bkmrk-b%29-s%E1%BB%AD-d%E1%BB%A5ng-bo-arduin">b)	Sử dụng bo Arduino để gửi dữ liệu lên Thingspeak</p>
+<p id="bkmrk-c%29-th%E1%BB%B1c-hi%E1%BB%87n-th%E1%BB%91ng-k">c)	Thực hiện thống kê dữ liệu trung bình của 3 thông số trên bằng ngôn ngữ MATLAB</p>
+<p id="bkmrk-d%29-s%E1%BB%AD-d%E1%BB%A5ng-matlab-v%E3%A0-">d)	Sử dụng MATLAB và dữ liệu hiện có trên Thingspeak để Hình dung mối tương quan giữa nhiệt độ và độ ẩm</p>
+<p id="bkmrk-e%29-th%E1%BB%B1c-hi%E1%BB%87n-d%E1%BB%B1-%E4%91o%E3%A1n-n">e)	Thực hiện dự đoán nhiệt độ trong 2h tiếp theo thông qua MATLAB
+Bài 22: Sử dụng bo mạch Arduino kết nối cảm biến DHT11 để gửi và nhận dữ liệu lên dịch vụ Blynk với các yêu cầu bên dưới?</p>
+<p id="bkmrk-a%29-thi%E1%BA%BFt-k%E1%BA%BF-giao-di%E1%BB%87-0">a)	Thiết kế giao diện thống kê dữ liệu ánh sáng, nhiệt độ và độ ẩm</p>
+<p id="bkmrk-b%29-s%E1%BB%AD-d%E1%BB%A5ng-bo-arduin-0">b)	Sử dụng bo Arduino để gửi dữ liệu lên Blynk</p>
+<p id="bkmrk-c%29-k%E1%BA%BFt-n%E1%BB%91i-v%E1%BB%9Bi-%E1%BB%A9ng-d">c)	Kết nối với ứng dụng di động để xem dữ liệu</p>
+<p id="bkmrk-d%29-k%E1%BA%BFt-n%E1%BB%91i-arduino-v">d)	Kết nối Arduino với một LED và điều khiển LED này thông qua Blynk hoặc tự động theo thông số nhiệt của DHT11
+Bài 23: Sử dụng bo mạch Arduino kết nối cảm biến khí GAS (MQ-2) để gửi và nhận dữ liệu lên dịch vụ Blynk với các yêu cầu bên dưới?</p>
+<p id="bkmrk-a%29-thi%E1%BA%BFt-k%E1%BA%BF-giao-di%E1%BB%87-1">a)	Thiết kế giao diện thống kê dữ liệu trạng thái khí gas</p>
+<p id="bkmrk-b%29-s%E1%BB%AD-d%E1%BB%A5ng-bo-arduin-1">b)	Sử dụng bo Arduino để gửi dữ liệu lên Blynk</p>
+<p id="bkmrk-c%29-k%E1%BA%BFt-n%E1%BB%91i-v%E1%BB%9Bi-%E1%BB%A9ng-d-0">c)	Kết nối với ứng dụng di động để xem dữ liệu</p>
+<p id="bkmrk-b%E3%A0i-24%3A-x%E3%A2y-d%E1%BB%B1ng-h%E1%BB%87-th">Bài 24: Xây dựng hệ thống xác định khoảng cách khi đỗ xe bằng cảm biến HC-SRF04 sử dụng ESP8266 và App Blynk?</p>
+<p id="bkmrk-a%29-thi%E1%BA%BFt-k%E1%BA%BF-giao-di%E1%BB%87-2">a)	Thiết kế giao diện thống kê dữ liệu.</p>
+<p id="bkmrk-b%29-s%E1%BB%AD-d%E1%BB%A5ng-bo-arduin-2">b)	Sử dụng bo Arduino để gửi dữ liệu lên Blynk</p>
+<p id="bkmrk-c%29-k%E1%BA%BFt-n%E1%BB%91i-v%E1%BB%9Bi-%E1%BB%A9ng-d-1">c)	Kết nối với ứng dụng di động để xem dữ liệu
+Bài 25: Xây dựng hệ thống điều khiển thiết bị nhà thông minh sử dụng NodeMCU ESP8266 và App Blynk?</p>
+<p id="bkmrk-a%29-thi%E1%BA%BFt-k%E1%BA%BF-giao-di%E1%BB%87-3">a)	Thiết kế giao diện thống kê dữ liệu.</p>
+<p id="bkmrk-b%29-s%E1%BB%AD-d%E1%BB%A5ng-bo-arduin-3">b)	Sử dụng bo Arduino để gửi dữ liệu lên Blynk</p>
+<p id="bkmrk-c%29-k%E1%BA%BFt-n%E1%BB%91i-v%E1%BB%9Bi-%E1%BB%A9ng-d-2">c)	Kết nối với ứng dụng di động để xem dữ liệu</p>
+
+    </div>        </div>
+        <div component="pointer" option:pointer:page-id="166" id="pointer" class="pointer-container" style="left: 717.5px; top: 253.888px;">
+    <div class="pointer anim ">
+        <span class="icon mr-xxs"><svg class="svg-icon" data-icon="link" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path>
+</svg> <svg class="svg-icon" data-icon="include" role="presentation" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 .5h24v24H0z" fill="none"></path>
+    <path d="M12 16.5l4-4h-3v-9h-2v9H8l4 4zm9-13h-6v1.99h6v14.03H3V5.49h6V3.5H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2z"></path>
+</svg></span>
+        <div class="input-group inline block">
+            <input readonly="readonly" type="text" id="pointer-url" placeholder="url">
+            <button class="button outline icon" data-clipboard-target="#pointer-url" type="button" title="Sao chép Liên kết"><svg class="svg-icon" data-icon="copy" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+</svg></button>
+        </div>
+            </div>
+</div>    </main>
+
+    <div id="sibling-navigation" class="grid half collapse-xs items-center mb-m px-m no-row-gap fade-in-when-active print-hidden">
+    <div>
+                    <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-lap-trinh-arduino" data-shortcut="previous" class="outline-hover no-link-style block rounded">
+                <div class="px-m pt-xs text-muted">Trước đó</div>
+                <div class="inline-block">
+                    <div class="icon-list-item no-hover">
+                        <span class="text-page "><svg class="svg-icon" data-icon="page" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+</svg></span>
+                        <span>Ôn tập lập trình Arduino</span>
+                    </div>
+                </div>
+            </a>
+            </div>
+    <div>
+                    <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/chapter/4f4ad" data-shortcut="next" class="outline-hover no-link-style block rounded text-xs-right">
+                <div class="px-m pt-xs text-muted text-xs-right">Tiếp theo</div>
+                <div class="inline block">
+                    <div class="icon-list-item no-hover">
+                        <span class="text-chapter "><svg class="svg-icon" data-icon="chapter" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"></path>
+</svg></span>
+                        <span></span>
+                    </div>
+                </div>
+            </a>
+            </div>
+</div>
+                </div>
+        </div>
+
+        <div class="tri-layout-right print-hidden">
+            <aside class="tri-layout-right-contents" id="__FPSC_ID_1_1682674962765" style="">
+                    <div id="page-details" class="entity-details mb-xl">
+        <h5>Chi tiết</h5>
+        <div class="blended-links">
+            <div class="entity-meta">
+    
+            <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino/revisions" class="entity-meta-item">
+            <svg class="svg-icon" data-icon="history" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path>
+</svg>Phiên bản #1
+        </a>
+    
+    
+            <div class="entity-meta-item">
+            <svg class="svg-icon" data-icon="star" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg>            <div>
+                Được tạo <span title="Fri, Apr 28, 2023 5:47 AM">8 phút trước</span> bởi <a href="http://huongdan.fit.vlute.edu.vn/user/tuongnk">tuongnk</a>
+            </div>
+        </div>
+    
+            <div class="entity-meta-item">
+            <svg class="svg-icon" data-icon="edit" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg>            <div>
+                Được cập nhật <span title="Fri, Apr 28, 2023 5:53 AM">1 phút trước</span> bởi <a href="http://huongdan.fit.vlute.edu.vn/user/tuongnk">tuongnk</a>
+            </div>
+        </div>
+    
+    </div>
+                            <div class="active-restriction">
+                                            <div class="entity-meta-item">
+                            <svg class="svg-icon" data-icon="lock" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M0 0h24v24H0V0z" id="a"></path>
+    </defs>
+    <clippath id="b">
+        <use overflow="visible" xlink:href="#a"></use>
+    </clippath>
+    <path clip-path="url(#b)" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z"></path>
+</svg>                            <div>Đang bật các quyền hạn từ Sách</div>
+                        </div>
+                                    </div>
+            
+            
+            
+                    </div>
+    </div>
+
+    <div class="actions mb-xl">
+        <h5>Hành động</h5>
+
+        <div class="icon-list text-link">
+
+            
+                                                <a href="http://huongdan.fit.vlute.edu.vn/books/th1392-phat-trien-phan-mem-nhung/page/on-tap-cac-cam-bien-arduino/revisions" data-shortcut="revisions" class="icon-list-item">
+                <span><svg class="svg-icon" data-icon="history" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path>
+</svg></span>
+                <span>Phiên bản</span>
+            </a>
+                        
+            <hr class="primary-background">
+
+                                </div>
+
+    </div>
+            </aside>
+        </div>
+    </div>
+
+    </div>
+
+    
+    <div component="back-to-top" class="back-to-top print-hidden" style="display: block; opacity: 0.4;">
+        <div class="inner">
+            <svg class="svg-icon" data-icon="chevron-up" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg> <span>Lên đầu trang</span>
+        </div>
+    </div>
+
+        <script src="./Ôn tập các cảm biến Ar... _ VLUTE Wiki_files/app.js.tải xuống" nonce=""></script>
+    
+    
+
+<script>
+		function returnCommentSymbol(language = "javascript") {
+			const languageObject = {
+				bat: "@REM",
+				c: "//",
+				csharp: "//",
+				cpp: "//",
+				closure: ";;",
+				coffeescript: "#",
+				dockercompose: "#",
+				css: "/*DELIMITER*/",
+				"cuda-cpp": "//",
+				dart: "//",
+				diff: "#",
+				dockerfile: "#",
+				fsharp: "//",
+				"git-commit": "//",
+				"git-rebase": "#",
+				go: "//",
+				groovy: "//",
+				handlebars: "{{!--DELIMITER--}}",
+				hlsl: "//",
+				html: "<!--DELIMITER-->",
+				ignore: "#",
+				ini: ";",
+				java: "//",
+				javascript: "//",
+				javascriptreact: "//",
+				json: "//",
+				jsonc: "//",
+				julia: "#",
+				latex: "%",
+				less: "//",
+				lua: "--",
+				makefile: "#",
+				markdown: "<!--DELIMITER-->",
+				"objective-c": "//",
+				"objective-cpp": "//",
+				perl: "#",
+				perl6: "#",
+				php: "<!--DELIMITER-->",
+				powershell: "#",
+				properties: ";",
+				jade: "//-",
+				python: "#",
+				r: "#",
+				razor: "<!--DELIMITER-->",
+				restructuredtext: "..",
+				ruby: "#",
+				rust: "//",
+				scss: "//",
+				shaderlab: "//",
+				shellscript: "#",
+				sql: "--",
+				svg: "<!--DELIMITER-->",
+				swift: "//",
+				tex: "%",
+				typescript: "//",
+				typescriptreact: "//",
+				vb: "'",
+				xml: "<!--DELIMITER-->",
+				xsl: "<!--DELIMITER-->",
+				yaml: "#"
+			}
+			if(!languageObject[language]){
+				return languageObject["python"].split("DELIMITER")
+			}
+			return languageObject[language].split("DELIMITER")
+		}
+		var savedChPos = 0
+		var returnedSuggestion = ''
+		let editor, doc, cursor, line, pos
+		pos = {line: 0, ch: 0}
+		var suggestionsStatus = false
+		var docLang = "python"
+		var suggestionDisplayed = false
+		var isReturningSuggestion = false
+		document.addEventListener("keydown", (event) => {
+		setTimeout(()=>{
+			editor = event.target.closest('.CodeMirror');
+			if (editor){
+				const codeEditor = editor.CodeMirror
+				if(!editor.classList.contains("added-tab-function")){
+					editor.classList.add("added-tab-function")
+					codeEditor.removeKeyMap("Tab")
+					codeEditor.setOption("extraKeys", {Tab: (cm)=>{
+
+						if(returnedSuggestion){
+							acceptTab(returnedSuggestion)
+						}
+						else{
+							cm.execCommand("defaultTab")
+						}
+					}})
+				}
+				doc = editor.CodeMirror.getDoc()
+				cursor = doc.getCursor()
+				line = doc.getLine(cursor.line)
+				pos = {line: cursor.line, ch: line.length}
+
+				if(cursor.ch > 0){
+					savedChPos = cursor.ch
+				}
+
+				const fileLang = doc.getMode().name
+				docLang = fileLang
+				const commentSymbol = returnCommentSymbol(fileLang)
+				if (event.key == "?"){
+					var lastLine = line
+					lastLine = lastLine.slice(0, savedChPos - 1)
+
+					if(lastLine.trim().startsWith(commentSymbol[0])){
+						if(fileLang !== "null"){
+							lastLine += " "+ fileLang
+						}
+						
+						lastLine = lastLine.split(commentSymbol[0])[1]
+						window.postMessage({source: 'getQuery', payload: { data: lastLine } } )
+						isReturningSuggestion = true
+						displayGrey("\nBlackbox loading...")
+					}
+				}else if(event.key === "Enter" && suggestionsStatus && !isReturningSuggestion){
+					var query = doc.getRange({ line: Math.max(0,cursor.line-50), ch: 0 }, { line: cursor.line, ch: line.length })
+					window.postMessage({source: 'getSuggestion', payload: { data: query, language: docLang, cursorPos: pos } } )
+					displayGrey("Blackbox loading...")
+				}else if(event.key === "ArrowRight" && returnedSuggestion){
+					acceptTab(returnedSuggestion)
+				}else if(event.key === "Enter" && isReturningSuggestion){
+					displayGrey("\nBlackbox loading...")
+				}else if(event.key === "Escape"){
+					displayGrey("")
+				}
+			}
+		}, 0)
+		})
+
+		function acceptTab(text){
+		if (suggestionDisplayed){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		}
+		function acceptSuggestion(text){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		function displayGrey(text){
+			if(!text){
+				document.querySelector(".blackbox-suggestion").remove()
+				return
+			}
+			var el = document.querySelector(".blackbox-suggestion")
+			if(!el){
+				el = document.createElement('span')
+				el.classList.add("blackbox-suggestion")
+				el.style = 'color:grey'
+				el.innerText = text
+			}
+			else{
+				el.innerText = text
+			}
+			
+			var lineIndex = pos.line;
+			editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(el)
+		}
+		function updateSuggestionStatus(s){
+			suggestionDisplayed = s
+			window.postMessage({source: 'updateSuggestionStatus', status: suggestionDisplayed, suggestion: returnedSuggestion})
+		}
+		window.addEventListener('message', (event)=>{
+		if (event.source !== window ) return
+		if (event.data.source == 'return'){
+			isReturningSuggestion = false
+			const formattedCode = formatCode(event.data.payload.data)
+			returnedSuggestion = formattedCode
+			displayGrey(formattedCode)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestReturn'){
+			const prePos = event.data.payload.cursorPos
+			if(pos.line == prePos.line && pos.ch == prePos.ch){
+				returnedSuggestion = event.data.payload.data
+				displayGrey(event.data.payload.data)
+				updateSuggestionStatus(true)
+			}
+			else{
+				displayGrey()
+			}
+		}
+		if(event.data.source == 'codeSearchReturn'){
+			isReturningSuggestion = false
+			displayGrey()
+		}
+		if(event.data.source == 'suggestionsStatus'){
+			suggestionsStatus = event.data.payload.enabled
+		}
+		if(event.data.source == 'acceptSuggestion'){
+			
+			acceptSuggestion(event.data.suggestion)
+		}
+		})
+		document.addEventListener("keyup", function(){
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		})
+		function formatCode(data) {
+			if (Array.isArray(data)) {
+				var finalCode = ""
+				var pairs = []
+		
+				const commentSymbol = returnCommentSymbol(docLang)
+				data.forEach((codeArr, idx) => {
+					const code = codeArr[0]
+					var desc = codeArr[1]
+					const descArr = desc.split("\n")
+					var finalDesc = ""
+					descArr.forEach((descLine, idx) => {
+						const whiteSpace = descLine.search(/\S/)
+						if (commentSymbol.length < 2 || idx === 0) {
+							finalDesc += insert(descLine, whiteSpace, commentSymbol[0])
+						}
+						if (commentSymbol.length > 1 && idx === descArr.length - 1) {
+							finalDesc = finalDesc + commentSymbol[1] + "\n"
+						}
+					})
+		
+					finalCode += finalDesc + "\n\n" + code
+					pairs.push(finalCode)
+				})
+				return "\n"+pairs.join("\n")
+			}
+		
+			return "\n"+data
+		}
+		
+		function insert(str, index, value) {
+			return str.substr(0, index) + value + str.substr(index)
+		}
+	</script></body></html>
