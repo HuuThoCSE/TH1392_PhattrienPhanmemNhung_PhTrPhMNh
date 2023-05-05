@@ -17,6 +17,6 @@ void loop() {
   // Đọc dữ liệu từ Bluetooth và hiển thị lên Serial Monitor
   if (BTSerial.available()) {
     char data = BTSerial.read();
-    Serial.write(data);
+    Serial.println(data);
   }
 }
