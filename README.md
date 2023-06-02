@@ -18,7 +18,10 @@ void loop(){
 ```
 
 ## **LCD**
-- 
+### **LCD I2C**
+
+### **LCD SPI**
+
 
 ## **DHT11**
 - **Lưu ý:** Nối vào chân digital
@@ -229,13 +232,43 @@ void loop() {
 **SPI:** MISO, SCK, MOSI and SS are also connected to digital pins 12, 13, and 11 and 10
 
 ## **Grive - Kết nối**
-[Link tải tại đây](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
+- Tải driver: [https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
 - Cài thư viện trong arduino (property): https://raw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_legacy_seeeduino_boards_index.json
 - Vào giao diện quản lý boar tìm “Seeduino AVR”
 - Chọn Seeeduino Lotus
 
 ## **Grove - ChainableLED**
-- ...
+- Cài thư viện: [ChainableLED](https://github.com/pjpmarques/ChainableLED)
+```c++
+#include <ChainableLED.h>
+
+#define NUM_LEDS 1
+
+ChainableLED leds(7, 8, NUM_LEDS);
+
+float hue = 0.0;
+boolean up = true;
+if(temp > 40){
+  for (byte i=0; i<NUM_LEDS; i++)
+  leds.setColorHSB(i, hue, 1.0, 0.5);
+  delay(50);
+  if (up)
+    hue+= 0.025;
+  else
+    hue-= 0.025;
+  if (hue>=1.0 && up)
+    up = false;
+  else if (hue<=0.0 && !up)
+    up = true;
+} else if(temp > 30){
+  leds.setColorRGB(0, 0, 0, 255); // Blue
+} else if(temp > 20){
+  leds.setColorRGB(0, 0, 255, 0); // Green
+} else if(temp > 10){
+  leds.setColorRGB(0, 255, 0, 0); // Red
+}
+
+```
 
 ## **Grove - LCD I2C**
 - Cài thư viện Library: [Grove - LCD rgb backlight](https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight)
