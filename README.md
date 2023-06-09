@@ -25,8 +25,11 @@ void loop(){
 
 ## **DHT11**
 - **Lưu ý:** Nối vào chân digital
+
 ## **SOIL**
-- 
+- Kèm theo
+    - 1210-271K
+    - A700V107M002ATE02
 
 ## **L298**
 ```c++
