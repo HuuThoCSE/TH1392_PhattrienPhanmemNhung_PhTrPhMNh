@@ -414,3 +414,305 @@ void setup(){
   timer.setInterval(1000L, sendSensor);  
 }
 ```
+
+```
+#define pinRed 8
+#define pinYellow 9
+#define pinGreen 10
+
+void setup() {
+  pinMode(pinRed,     OUTPUT);
+  pinMode(pinYellow,  OUTPUT);
+  pinMode(pinGreen,   OUTPUT);
+}
+
+void blink(int pin, int time){
+  digitalWrite(pin, 1);
+  delay(time);
+  digitalWrite(pin, 0);
+}
+
+void loop() {
+  blink(pinGreen, 30000);
+  blink(pinRed, 20000);
+  blink(pinYellow, 5000);
+}
+```
+
+```
+byte ledPin[] = {2,3,4,5,6,7,8,9};
+byte pinCount;
+void setup() {
+  pinCount = sizeof(ledPin);
+  for (int i=0; i<pinCount; i++){
+    pinMode(ledPin[i], OUTPUT);
+    digitalWrite(ledPin[i], LOW);
+  }
+}
+
+void loop() {
+  for (int i=0; i<pinCount; i++)
+    digitalWrite(ledPin[i], 1);
+  delay(3000);
+
+  for (int i=0; i<pinCount; i++)
+    digitalWrite(ledPin[i], 0);
+  delay(3000);
+}
+```
+
+```
+byte ledPin[] = {2,3,4,5,6,7,8,9};
+byte pinCount;
+void setup() {
+  pinCount = sizeof(ledPin);
+  for (int i=0; i<pinCount; i++){
+    pinMode(ledPin[i], OUTPUT);
+    digitalWrite(ledPin[i], LOW);
+  }
+}
+
+void loop() {
+  for (int i=0; i<pinCount; i++){
+    digitalWrite(ledPin[i], 1);
+    delay(100);
+  }
+    
+  for (int i=0; i<pinCount; i++){
+    digitalWrite(ledPin[i], 0);
+    delay(100);
+  }
+}
+```
+
+```
+byte ledPin[] = {2,3,4,5,6,7,8,9};
+byte pinCount;
+void setup() {
+  pinCount = sizeof(ledPin);
+  for (int i=0; i<pinCount; i++){
+    pinMode(ledPin[i], OUTPUT);
+    digitalWrite(ledPin[i], LOW);
+  }
+}
+
+void loop() {
+  byte num_random = random(pinCount);
+  digitalWrite(ledPin[num_random], 1);
+  delay(100);
+  digitalWrite(ledPin[num_random], 0);
+}
+```
+
+```
+byte ledPin[] = {2,3,4,5,6,7,8,9};
+byte pinCount;
+void setup() {
+  pinCount = sizeof(ledPin);
+  for (int i=0; i<pinCount; i++){
+    pinMode(ledPin[i], OUTPUT);
+    digitalWrite(ledPin[i], LOW);
+  }
+}
+
+void loop() {
+  for(int i=0; i<pinCount; i++){
+    if((i+1)%2==0)
+      digitalWrite(ledPin[i], 1);
+  }
+}
+```
+
+```
+#define pinBtn 2
+#define pinLed 8
+const unsigned long debounceDelay = 50;
+unsigned long lastDebounceTime = 0;
+
+void setup() {
+  pinMode(pinBtn, INPUT);
+  pinMode(pinLed, OUTPUT);
+  Serial.begin(9600);
+}
+
+// void loop() {
+//   static bool lastBtnState = HIGH;
+//   bool btnState = digitalRead(pinBtn);
+
+//   if (btnState != lastBtnState) 
+//     lastDebounceTime = millis();
+  
+//   if ((millis() - lastDebounceTime) > debounceDelay) {
+//     if (btnState == LOW) {
+//       digitalWrite(pinLed, !digitalRead(pinLed));
+//     }
+//   }
+
+//   lastBtnState = btnState;
+// }
+  long A, B = 0;
+  int stBTN, tttd;
+void loop(){
+  stBTN = digitalRead(2);
+  // Nhan
+  if (stBTN == HIGH && tttd == LOW) {
+    A = millis();
+  }
+
+  // Khong nhan
+  if(stBTN == LOW && tttd==HIGH){
+    B = millis();
+    Serial.print("TG nhan: ");
+    Serial.println(B-A);
+
+    if(B-A > 120)
+      digitalWrite(pinLed, !digitalRead(pinLed));
+  }
+  tttd = stBTN;
+}
+
+```
+#define pinBtn 2
+#define pinLed 8
+
+unsigned long buttonPressTime = 0;
+bool isButtonPressed = false;
+bool ledState = false;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pinLed, OUTPUT);
+  pinMode(pinBtn, INPUT);
+}
+
+void loop() {
+  int buttonState = digitalRead(pinBtn);
+
+  if (buttonState == LOW && !isButtonPressed) {
+    buttonPressTime = millis();
+    isButtonPressed = true;
+  }
+_
+  if (isButtonPressed && buttonState == HIGH) {
+    unsigned long duration = millis() - buttonPressTime;
+    if (duration >= 500) {
+      ledState = !ledState;
+      digitalWrite(pinLed, ledState);
+      delay(5000);
+      digitalWrite(pinLed, LOW);
+    }
+    isButtonPressed = false;
+  }
+}
+
+```
+
+```
+int mang[10][7] = {
+  {1, 1, 1, 1, 1, 1, 0}, //0
+  {0, 1, 1, 0, 0, 0, 0}, //1
+  {1, 1, 0, 1, 1, 0, 1}, //2
+  {1, 1, 1, 1, 0, 0, 1}, //3
+  {0, 1, 1, 0, 0, 1, 1}, //4
+  {1, 0, 1, 1, 0, 1, 1}, //5
+  {1, 0, 1, 1, 1, 1, 1}, //6
+  {1, 1, 1, 0, 0, 0, 0}, //7
+  {1, 1, 1, 1, 1, 1, 1}, //8
+  {1, 1, 1, 1, 0, 1, 1}, //9
+};
+
+void hienThiSo(int so) {
+  for (int i = 13; i >= 7; i--)
+    digitalWrite(i, mang[so][13 - i]);
+}
+
+void setup() {
+  for (int i = 1; i <= 13; i++)
+    pinMode(i, OUTPUT);
+}
+
+void loop() {
+  hienThiSo(3);
+}
+
+```
+
+```
+int mang[10][7] = {
+  {1, 1, 1, 1, 1, 1, 0}, //0
+  {0, 1, 1, 0, 0, 0, 0}, //1
+  {1, 1, 0, 1, 1, 0, 1}, //2
+  {1, 1, 1, 1, 0, 0, 1}, //3
+  {0, 1, 1, 0, 0, 1, 1}, //4
+  {1, 0, 1, 1, 0, 1, 1}, //5
+  {1, 0, 1, 1, 1, 1, 1}, //6
+  {1, 1, 1, 0, 0, 0, 0}, //7
+  {1, 1, 1, 1, 1, 1, 1}, //8
+  {1, 1, 1, 1, 0, 1, 1}, //9
+};
+
+void hienThiSo(int so) {
+  for (int i = 13; i >= 7; i--)
+    digitalWrite(i, mang[so][13 - i]);
+}
+
+void setup() {
+  for (int i = 1; i <= 13; i++)
+    pinMode(i, OUTPUT);
+}
+
+void loop() {
+  for(int i=0; i<=9; i++){
+    hienThiSo(i);
+    delay(500);
+  }
+}
+```
+
+```
+#define ledRed 2
+#define ledYellow 3
+#define ledGreen 4
+
+int mang[10][7] = {
+  {1, 1, 1, 1, 1, 1, 0}, //0
+  {0, 1, 1, 0, 0, 0, 0}, //1
+  {1, 1, 0, 1, 1, 0, 1}, //2
+  {1, 1, 1, 1, 0, 0, 1}, //3
+  {0, 1, 1, 0, 0, 1, 1}, //4
+  {1, 0, 1, 1, 0, 1, 1}, //5
+  {1, 0, 1, 1, 1, 1, 1}, //6
+  {1, 1, 1, 0, 0, 0, 0}, //7
+  {1, 1, 1, 1, 1, 1, 1}, //8
+  {1, 1, 1, 1, 0, 1, 1}, //9
+};
+
+void hienThiSo(int so) {
+  for (int i = 13; i >= 7; i--)
+    digitalWrite(i, mang[so][13 - i]);
+}
+
+void setup() {
+  pinMode(ledRed, OUTPUT);
+  pinMode(ledYellow, OUTPUT);
+  pinMode(ledGreen, OUTPUT);
+  for (int i = 1; i <= 13; i++)
+    pinMode(i, OUTPUT);
+}
+
+void blink(int pin, int time){
+  int numSeconds = time / 1000;
+  digitalWrite(pin, 1);
+  for(int i=numSeconds; i>=0; i--){
+    hienThiSo(i);
+    delay(1000);
+  }
+  digitalWrite(pin, 0);
+}
+
+void loop() {
+  blink(ledRed, 9000);
+  blink(ledYellow, 9000);
+  blink(ledGreen, 9000);
+}
+```
