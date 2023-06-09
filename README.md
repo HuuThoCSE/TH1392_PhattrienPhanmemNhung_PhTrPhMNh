@@ -19,9 +19,17 @@ void loop(){
 
 ## **LCD**
 ### **LCD I2C**
+#### **Đấu nối**
+![image](https://github.com/huuthocs/TH1392_PhattrienPhanmemNhung_PhTrPhMNh/assets/89997693/370b7a61-20c2-4535-b3f5-d55d613740d5)
 
+#### **Thư viện**
+[LiquidCrystal I2C](https://www.arduinolibraries.info/libraries/liquid-crystal-i2-c)
 ### **LCD SPI**
+#### **Đấu nối**
+![image](https://github.com/huuthocs/TH1392_PhattrienPhanmemNhung_PhTrPhMNh/assets/89997693/cfc2349f-4d33-4b53-8cac-e5d2c012841d)
 
+#### **Thư viện**
+[LiquidCrystal (Có sẵn không cần cài)](https://github.com/arduino-libraries/LiquidCrystal)
 
 ## **DHT11**
 - **Lưu ý:** Nối vào chân digital
