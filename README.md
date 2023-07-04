@@ -31,8 +31,13 @@ void loop(){
 #### **Thư viện**
 [LiquidCrystal (Có sẵn không cần cài)](https://github.com/arduino-libraries/LiquidCrystal)
 
-## **DHT11**
+## **DHT**
 - **Lưu ý:** Nối vào chân digital
+
+### DHT11
+
+### DHT22
+- Proteus + Library arduino (DHT Sensor): Dùng type DHT11 (10h18pm - 4/7/2023)
 
 ## **SOIL**
 - Kèm theo
@@ -783,3 +788,175 @@ void loop() {
   delay(1000); 
 }
 ```
+
+## Blynk + Proteus
+```c++
+// Phải dùng thư viện:
+#include <BlynkSimpleEthernet.h>
+```
+
+
+# ÔN TẬP BÀI KIỂM TRA
+## LED
+
+### Đề: Đấu nối 8 led theo hình tròn lập trình **sáng tắt như rắn săn mồi tuần tự** theo chiều kim đồng hồ ?
+```c++
+void setup() {
+  for(int i=2; i<=9; i++){
+    pinMode(i, OUTPUT);
+  }  
+}
+
+void loop() {
+  for(int i=2; i<=9; i++){
+    digitalWrite(i, HIGH);
+    delay(100);
+  }
+
+  for(int i=9; i>=2; i--){
+    digitalWrite(i, LOW);
+  }
+  delay(100);
+}
+```
+
+### Đề: Đấu nối 8 led theo hình tròn lập trình **sáng tắt tuần tự** theo chiều kim đồng hồ ?
+```c++
+const int FIRST_PIN = 2;
+const int LAST_PIN = 9;
+const int DELAY_TIME = 100;
+
+void setup() {
+  for (int i = FIRST_PIN; i <= LAST_PIN; i++) {
+    pinMode(i, OUTPUT);
+  }
+}
+
+void loop() {
+  // Sáng LED theo chiều kim đồng hồ
+  for (int i = FIRST_PIN; i <= LAST_PIN; i++) {
+    digitalWrite(i, HIGH); // Bật LED
+    delay(DELAY_TIME); // Chờ
+    digitalWrite(i, LOW); // Tắt LED
+  }
+}
+```
+
+### Đề: Đấu nối nút nhấn B, Khi nhấn vào nút nhấn B sẽ đảo chiều sáng tắt các led ( ngược chiều kim đồng hồ) 
+```c++
+const int FIRST_PIN = 2;
+const int LAST_PIN = 9;
+const int DELAY_TIME = 300;
+
+#define btnB 10
+
+bool status = 0;
+
+void setup() {
+  for (int i = FIRST_PIN; i <= LAST_PIN; i++) {
+    pinMode(i, OUTPUT);
+  }
+  pinMode(btnB, INPUT_PULLUP);
+}
+
+void loop() {
+  if(status==0){
+    // Sáng LED theo chiều kim đồng hồ
+    for (int i = FIRST_PIN; i <= LAST_PIN; i++) {
+      digitalWrite(i, HIGH); // Bật LED
+      if(digitalRead(btnB) == LOW){
+        status = !status;
+      }
+      delay(DELAY_TIME); // Chờ
+      digitalWrite(i, LOW); // Tắt LED
+    }
+  } else {
+    // Sáng LED theo chiều kim đồng hồ
+    for (int i = LAST_PIN; i >= FIRST_PIN; i--) {
+      digitalWrite(i, HIGH); // Bật LED
+      if(digitalRead(btnB) == LOW){
+        status = !status;
+      }
+      delay(DELAY_TIME); // Chờ
+      digitalWrite(i, LOW); // Tắt LED
+    }
+  }
+  
+}
+```
+
+
+### Đề: Nếu nhiệt độ >30 thì LED C sáng tắt tuần tự trong 2s không sử dụng delay (1đ) ?
+```c++
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+
+#include "DHT.h"
+
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+float h, t = 0;
+
+unsigned long time_cur = 0;
+unsigned long time_last = 0;
+unsigned long time_ledC = 2000;
+
+
+#define ledC 3
+
+void setup() {
+  lcd.init();
+  dht.begin();
+
+  pinMode(ledC, OUTPUT);
+
+  lcd.setCursor(0, 0);
+  lcd.print("21022008");
+  lcd.setCursor(0, 1);
+  lcd.print("Nguyen Huu Tho");
+  // delay(15000);
+  delay(100);
+  lcd.clear();
+}
+
+void loop() {
+  time_cur = millis();
+  if(t > 30){
+    if(time_cur - time_last > time_ledC){
+      digitalWrite(ledC, !digitalRead(ledC));
+      time_last = time_cur;
+    } else {
+      digitalWrite(ledC, LOW);
+    }
+  }
+}
+
+```
+
+### Đề: Hiển thị nhiệt độ trung bình 6 lần đo
+```c++
+void loop() {
+  float sum = 0;
+
+  for(int i=0; i < 6; i++){ // Exp: Chú ý dòng for
+    sum += dht.readTemperature();;
+    delay(500);
+  }
+
+  float avg = sum / 6;
+
+  lcd.setCursor(0, 0);
+  lcd.print("Nhiet do tb 6lan: "); 
+  lcd.setCursor(0, 1);
+  lcd.print(avg); lcd.print("C");
+
+  delay(1000);
+}
+
+```
+
+
