@@ -41,8 +41,8 @@ void loop(){
 
 ## **SOIL**
 - Kèm theo
-    - 1210-271K
-    - A700V107M002ATE02
+    - 1210-271K - INDUCTOR
+    - A700V107M002ATE02 - CAPACITOR
 #### **Đấu nối**
 ![image](https://github.com/huuthocs/TH1392_PhattrienPhanmemNhung_PhTrPhMNh/assets/89997693/36e7625f-c072-4430-98ed-e860628ae65a)
 
