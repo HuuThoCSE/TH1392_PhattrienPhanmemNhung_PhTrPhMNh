@@ -4,7 +4,7 @@
 #include "DHT.h"
 
 #define DHTPIN 2
-#define DHTTYPE DHT11
+#define DHTTYPE SDA
 DHT dht(DHTPIN, DHTTYPE);
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);

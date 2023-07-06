@@ -35,5 +35,4 @@ void loop() {
       digitalWrite(i, LOW); // Tắt LED
     }
   }
-  
 }
