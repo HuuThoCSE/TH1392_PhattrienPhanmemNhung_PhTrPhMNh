@@ -1,5 +1,5 @@
 # **Document**
-![Grove Creator Kit ganma](https://files.seeedstudio.com/products/110020230/Grove-Creator-Kit-ganma.pdf)
+[Grove Creator Kit ganma](https://files.seeedstudio.com/products/110020230/Grove-Creator-Kit-ganma.pdf)
 
 # **I. NỘI DUNG**
 - Thiết bị thật
